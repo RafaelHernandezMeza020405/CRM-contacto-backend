@@ -1,21 +1,23 @@
-package mnContacto;
+package modelos;
 
 
 public class Contacto {
-    private String nombres;
-    private String apellidos;
-    private String email;
-    private String celular;
-    private String fechadenacimiento;
-    private String direccion;
-    private String tipodecontacto;
-    private String origen;
+    protected String nombres;
+    protected String apellidos;
+    protected String email;
+    protected String celular;
+    protected String fechadenacimiento;
+    protected String direccion;
+    protected String tipodecontacto;
+    protected String origen;
+    protected String tareas;
+    protected String comentarios;
     
 
 
     public Contacto(){
     }
-    public Contacto(String nombres, String apellidos, String email, String celular, String fechadenacimiento, String direccion, String tipodecontacto, String origen){
+    public Contacto(String nombres, String apellidos, String email, String celular, String fechadenacimiento, String direccion, String tipodecontacto, String origen, String tareas, String comentarios){
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.email = email;
@@ -24,6 +26,8 @@ public class Contacto {
         this.direccion = direccion;
         this.tipodecontacto = tipodecontacto;
         this.origen = origen;
+        this.tareas = tareas;
+        this.comentarios = comentarios;
 
     }
 
@@ -57,6 +61,30 @@ public class Contacto {
     public void setEmail(String email){
         this.email = email;
 
+    }
+
+    public String getTipodecontacto() {
+        return tipodecontacto;
+    }
+
+    public void setTipodecontacto(String tipodecontacto) {
+        this.tipodecontacto = tipodecontacto;
+    }
+
+    public String getTareas() {
+        return tareas;
+    }
+
+    public void setTareas(String tareas) {
+        this.tareas = tareas;
+    }
+
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(String comentarios) {
+        this.comentarios = comentarios;
     }
     
     public String getCelular(){
