@@ -10,8 +10,6 @@ public class Contacto {
     private String direccion;
     private String tipodecontacto;
     private String origen;
-    private String tareas;
-    private String comentarios;
     
 
 
@@ -28,8 +26,6 @@ public class Contacto {
         this.direccion = direccion;
         this.tipodecontacto = tipodecontacto;
         this.origen = origen;
-        this.tareas = tareas;
-        this.comentarios = comentarios;
 
     }
 
@@ -97,25 +93,10 @@ public class Contacto {
         this.origen = origen;
     }
 
-    public String getTareas() {
-        return tareas;
-    }
-
-    public void setTareas(String tareas) {
-        this.tareas = tareas;
-    }
-
-    public String getComentarios() {
-        return comentarios;
-    }
-
-    public void setComentarios(String comentarios) {
-        this.comentarios = comentarios;
-    }
-
+  
     @Override
     public String toString() {
-        return "Contacto{" + "nombres=" + nombres + ", apellidos=" + apellidos + ", email=" + email + ", celular=" + celular + ", fechadenacimiento=" + fechadenacimiento + ", direccion=" + direccion + ", tipodecontacto=" + tipodecontacto + ", origen=" + origen + ", tareas=" + tareas + ", comentarios=" + comentarios + '}';
+        return "Contacto{" + "nombres=" + nombres + ", apellidos=" + apellidos + ", email=" + email + ", celular=" + celular + ", fechadenacimiento=" + fechadenacimiento + ", direccion=" + direccion + ", tipodecontacto=" + tipodecontacto + ", origen=" + origen + '}';
     }
 
    

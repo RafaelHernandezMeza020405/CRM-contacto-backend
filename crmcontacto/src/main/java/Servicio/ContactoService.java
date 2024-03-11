@@ -35,8 +35,6 @@ public class ContactoService {
                 contacto.setDireccion(document.getString("direccion"));
                 contacto.setTipodecontacto(document.getString("tipoDeContacto"));
                 contacto.setOrigen(document.getString("origen"));
-                contacto.setTareas(document.getString("tareas"));
-                contacto.setComentarios(document.getString("comentarios"));
                 listaDeContacto.add(contacto);
             }
 
@@ -56,16 +54,14 @@ public class ContactoService {
                 .append("fechadenacimiento", contacto.getFechadenacimiento())
                 .append("direccion", contacto.getDireccion())
                 .append("tipoDeContacto", contacto.getTipodecontacto())
-                .append("origen", contacto.getOrigen())
-                .append("tareas", contacto.getTareas())
-                .append("comentarios", contacto.getComentarios());
+                .append("origen", contacto.getOrigen());
 
         obtenerColeccion().insertOne(document);
 
     }
 
-    public Contacto obtenerContactoPorNombre(String nombres) {
-        MongoCursor<Document> cursor = obtenerColeccion().find(eq("nombres", nombres)).iterator();
+    public Contacto obtenerContactoPorNombre(String email) {
+        MongoCursor<Document> cursor = obtenerColeccion().find(eq("email", email)).iterator();
         try {
             if (cursor.hasNext()) {
                 Document document = cursor.next();
@@ -86,8 +82,8 @@ public class ContactoService {
         return null;
     }
 
-    public Contacto borrarContacto(String nombres) {
-        MongoCursor<Document> cursor = obtenerColeccion().find(eq("nombres", nombres)).iterator();
+    public Contacto borrarContacto(String email) {
+        MongoCursor<Document> cursor = obtenerColeccion().find(eq("email", email)).iterator();
         try {
             if (cursor.hasNext()) {
                 Document document = cursor.next();
@@ -109,12 +105,10 @@ public class ContactoService {
         }
         return null;
     }
+    public Contacto actualizarContacto(String email, Contacto objContacto) {
 
-  
-    public Contacto actualizarContacto(String nombres, Contacto objContacto) {
-
-        Bson filter = Filters.eq("nombres", nombres);
-        Bson update = Updates.combine(new Document("$set", new Document("nombres", objContacto.getNombres())
+        Bson filter = Filters.eq("email", email);
+        Bson update = Updates.combine(new Document("$set", new Document("email", objContacto.getEmail())
                 .append("nombres", objContacto.getNombres())
                 .append("apellidos", objContacto.getApellidos())
                 .append("email", objContacto.getEmail())
@@ -123,8 +117,6 @@ public class ContactoService {
                 .append("direccion", objContacto.getDireccion())
                 .append("origen", objContacto.getOrigen())
                 .append("tipoDeContacto", objContacto.getTipodecontacto())
-                .append("tareas", objContacto.getTareas())
-                .append("comentarios", objContacto.getComentarios())
         ));
         obtenerColeccion().findOneAndUpdate(filter, update);
       

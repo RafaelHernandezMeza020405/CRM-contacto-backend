@@ -31,30 +31,23 @@ public class ContactoResource {
     }
 
     @GET
-    @Path("/{nombres}")
-    public Contacto obtenerContactoPorNombre(@PathParam("nombres") String nombres) {
-        Contacto contacto = service.obtenerContactoPorNombre(nombres);
+    @Path("/{email}")
+    public Contacto obtenerContactoPorNombre(@PathParam("email") String email) {
+        Contacto contacto = service.obtenerContactoPorNombre(email);
         return service.verificarSiExisteContacto(contacto);
     }
+
     @DELETE
-    @Path("/{nombres}")
-    public void borrar(@PathParam("nombres") String nombres){
-        service.borrarContacto(nombres);
-    
+    @Path("/{email}")
+    public void borrar(@PathParam("email") String email) {
+        service.borrarContacto(email);
     }
-    
-    
+
     @PUT
-    @Path("/{nombres}")
-    public Contacto actualizar(@PathParam("nombres") String nombres, Contacto objContact){
-          Contacto contactoActualizar = service.actualizarContacto(nombres, objContact);
-          if(contactoActualizar == null){
-              return null;
-          }else{
-              return contactoActualizar;
-          }
+    @Path("/{email}")
+    public Contacto actualizar(@PathParam("email") String email, Contacto objContact) {
+        Contacto contactoActualizar = service.actualizarContacto(email, objContact);
+        return service.verificarSiExisteContacto(contactoActualizar);
     }
-          
+
 }
-
-
